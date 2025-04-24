@@ -1,0 +1,156 @@
+/* Add a black background color to the top navigation */ 
+.topnav { 
+    background-color: #eeeeee; 
+    width: 100%; 
+} 
+
+/* Style the links inside the navigation bar */ 
+.topnav a { 
+    color: #000000; 
+    text-align: center; 
+    margin-right: 25px; 
+    text-decoration: none; 
+    font-size: 17px; 
+} 
+
+/* Add a color to the active/current link */ 
+.topnav a.active{ 
+    color: #008CBA; 
+}
+
+
+
+.lab5_body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #ffffff; /* أبيض */
+      color: #000000; /* أسود */
+      text-align: center;
+      padding: 20px;
+      display: block;
+}
+  
+  /* روابط */
+#lab5_style_links_1,
+#lab5_style_links_2,
+#lab5_style_links_3 {
+      display: block;
+      padding: 10px;
+      margin: 5px auto;
+      width: 300px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+}
+  
+#lab5_style_links_1 {
+      background-color: #FFCCCC;
+      color: #16adad;
+}
+#lab5_style_links_1:hover {
+      background-color: #72a374;
+}
+#lab5_style_links_1:visited {
+      color: #800080;
+}
+#lab5_style_links_1:active {
+      background-color: #191ba7;
+}
+  
+#lab5_style_links_2 {
+      background-color: #CCFFCC;
+      color: #762aa5;
+}
+#lab5_style_links_2:hover {
+      background-color: #9fa52a;
+}
+#lab5_style_links_2:visited {
+      color: #72a374;
+}
+#lab5_style_links_2:active {
+      background-color: #191ba7;
+}
+  
+#lab5_style_links_3 {
+      background-color: #CCCCFF;
+      color: #9fa52a;
+}
+#lab5_style_links_3:hover {
+      background-color: #008CBA;
+}
+#lab5_style_links_3:visited {
+      color: #16adad;
+}
+#lab5_style_links_3:active {
+      background-color: #008CBA;
+}
+  
+  /* العناوين */
+h1 {
+      font-size: 30px;
+      color: deeppink;
+      text-decoration: underline;
+      margin-bottom: 20px;
+}
+  
+h2, h3 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+}
+  
+  /* قوائم */
+#lab5_listing ul {
+      list-style-type: square;
+      list-style-position: inside;
+      text-align: center;
+      padding: 0;
+      margin: 0 auto;
+      display: block;
+}
+  
+#lab5_listing ul ul {
+      list-style-type: circle;
+      margin-left: 20px;
+}
+  
+  /* الجدول */
+table {
+      width: 60%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      font-size: 16px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+  
+th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+}
+  
+th {
+      background-color: azure;
+      color: #45dbe5;
+      font-weight: bold;
+}
+  
+.tool_name {
+      background-color: #191ba7;
+      color: white;
+}
+  
+.tool_description {
+      background-color: hwb(180 93% 6%);
+}
+  
+  /* أقسام محتوى */
+section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+}
+  
