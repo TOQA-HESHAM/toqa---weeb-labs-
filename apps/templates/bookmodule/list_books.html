@@ -1,18 +1,28 @@
-{% extends "layouts/base.html" %} 
-{% load static %} 
-{% block title %} My First Index HTML Page {% endblock title %} 
-{% block content %} 
-  <h1>List of Books</h1>
-  <a href="{% url 'books.view_one_book' bookId=123 %}"><h2> Internet & World Wide Web How to Program</h2></a>
-  <a href="{% url 'books.view_one_book' bookId=123 %}"><img src="{% static 'images/book1.jpeg' %}" alt="Book1 img desc" width="200" height="200"></a>
-  <hr> 
+{% extends "layouts/base.html" %}
+{% block title %} Search results {% endblock title %}
 
-  <h2> C++ How to Program, Late Objects Version</h2>
-  <img src="{% static 'images/book2.jpeg' %}" alt="Book2 img desc" width="200" height="200">
-  <hr>
+{% block content %}
+<h1> List Books</h1>
 
-  <h2> C++ How to Program, Late Objects Version</h2>
-  <img src="{% static 'images/book3.jpeg' %}" alt="Book3 img desc" width="200" height="200">
-  <hr>
+{% if books %}
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>   
 
-{% endblock content %} 
+    {% for i in books %}
+    <tr>
+      <td>{{ i.id }}</td>
+      <td>{{ i.title }}</td>
+      <td>{{ i.author }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% else %}
+  <p>No book is found.</p>
+{% endif %}
+
+{% endblock content %}
