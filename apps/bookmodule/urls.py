@@ -17,4 +17,7 @@ urlpatterns = [
  path('lab5/', views.lab5, name='books.lab5'),
  ## lab6
  path('search', views.search_books, name='search_books'),
+ #lab7
+ path('simple/query', views.simple_query, name='simple_query'),
+ path('complex/query', views.complex_query, name='complex_query'),
 ]

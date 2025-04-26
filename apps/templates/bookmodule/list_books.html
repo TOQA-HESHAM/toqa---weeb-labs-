@@ -10,6 +10,8 @@
       <th>ID</th>
       <th>Title</th>
       <th>Author</th>
+      <th>Price</th>
+      <th>Edition</th>
     </tr>   
 
     {% for i in books %}
@@ -17,6 +19,8 @@
       <td>{{ i.id }}</td>
       <td>{{ i.title }}</td>
       <td>{{ i.author }}</td>
+      <td>{{ i.price }}</td>
+      <td>{{ i.edition }}</td>
     </tr>
     {% endfor %}
   </table>
@@ -24,5 +28,10 @@
 {% else %}
   <p>No book is found.</p>
 {% endif %}
+
+{% comment %} {% for obj in books %} 
+   ID: {{obj.id}}, Title: {{obj.title}} 
+   <hr> 
+{% endfor %} {% endcomment %}
 
 {% endblock content %}
