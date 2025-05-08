@@ -8,6 +8,8 @@ from django.db.models import Count
 from .models import Department
 from .models import Course
 from django.db.models import Min
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Book
 
 
 
@@ -181,3 +183,31 @@ def lab9_task3(request):
 def lab9_task4(request):
     departments = Department.objects.annotate(num_students=Count('student')).filter(num_students__gt=2).order_by('-num_students')
     return render(request, 'bookmodule/lab9_task4.html', {'departments': departments})        
+
+
+## lab 10
+def list_books_part1(request):
+    books = Book.objects.all()
+    return render(request, 'bookmodule/part1/list_books_part1.html', {'books': books})
+
+def add_book_part1(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        Book.objects.create(title=title, author=author)
+        return redirect('lab9_part1_list')
+    return render(request, 'bookmodule/part1/add_book.html')
+
+def edit_book_part1(request, id):
+    book = get_object_or_404(Book, id=id)
+    if request.method == 'POST':
+        book.title = request.POST.get('title')
+        book.author = request.POST.get('author')
+        book.save()
+        return redirect('lab9_part1_list')
+    return render(request, 'bookmodule/part1/edit_book.html', {'book': book})
+
+def delete_book_part1(request, id):
+    book = get_object_or_404(Book, id=id)
+    book.delete()
+    return redirect('lab9_part1_list')        

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block title %} List Books {% endblock title %}
+{% block content %}
+  <h1>All Books</h1>
+  <a href="{% url 'lab9_part1_add' %}">➕ Add New Book</a>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>ID</th><th>Title</th><th>Author</th><th>Actions</th>
+    </tr>
+    {% for book in books %}
+      <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+          <a href="{% url 'lab9_part1_edit' book.id %}">✏️ Edit</a> |
+          <a href="{% url 'lab9_part1_delete' book.id %}">🗑️ Delete</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">No books found.</td></tr>
+    {% endfor %}
+  </table>
+{% endblock content %}
