@@ -1,7 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse   
 from .models import Book
-#neww*       
+from django.db.models import Q
+from django.db.models import Count, Sum, Avg, Max, Min
+from .models import Address, Student
+from django.db.models import Count
+
+
+
+
 # new *
 def index(request):
     name = request.GET.get("name") or "world!"
@@ -66,7 +73,7 @@ def search_books(request):
         return render(request, 'bookmodule/list_books.html', {'books': newBooks})
 
     return render(request, 'bookmodule/search.html')
-
+## lab 7
 def simple_query(request):
     mybooks = Book.objects.filter(title__icontains='and')
     return render(request, 'bookmodule/list_books.html', {'books': mybooks})
@@ -81,3 +88,68 @@ def complex_query(request):
         return render(request, 'bookmodule/list_books.html', {'books': mybooks})
     else:
         return render(request, 'bookmodule/index.html')
+    
+## lab 8
+
+def task1_view(request):
+    books = Book.objects.filter(Q(price__lte=80))  
+    context = {'books': books}
+    return render(request, 'bookmodule/list_books.html', context)
+
+
+def task2_view(request):
+    books = Book.objects.filter(
+        Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co'))
+    )
+    context = {'books': books}
+    return render(request, 'bookmodule/list_books.html', context)
+
+
+
+def task3_view(request):
+    books = Book.objects.filter(
+        ~(
+            Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co'))
+        )
+    )
+    context = {'books': books}
+    return render(request, 'bookmodule/list_books.html', context)
+
+def task4_view(request):
+    books = Book.objects.all().order_by('title')
+    context = {'books': books}
+    return render(request, 'bookmodule/list_books.html', context)
+
+
+
+
+def task5_view(request):
+    aggregation = Book.objects.aggregate(
+        count_books=Count('id'),
+        sum_prices=Sum('price'),
+        avg_prices=Avg('price'),
+        max_price=Max('price'),
+        min_price=Min('price')
+    )
+    context = {'aggregation': aggregation}
+    return render(request, 'bookmodule/aggregation_result.html', context)
+
+
+
+def task5_view(request):
+    aggregation = Book.objects.aggregate(
+        count_books=Count('id'),
+        sum_prices=Sum('price'),
+        avg_prices=Avg('price'),
+        max_price=Max('price'),
+        min_price=Min('price')
+    )
+    context = {'aggregation': aggregation}
+    return render(request, 'bookmodule/aggregation_result.html', context)
+
+
+
+def task7_view(request):
+    data = Address.objects.annotate(student_count=Count('student'))
+    context = {'cities': data}
+    return render(request, 'bookmodule/task7.html', context)

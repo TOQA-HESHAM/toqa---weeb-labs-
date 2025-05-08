@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+{% block title %} Aggregation Results {% endblock title %}
+
+{% block content %}
+  <h1>Aggregation Results</h1>
+  <ul>
+    <li>Number of Books: {{ aggregation.count_books }}</li>
+    <li>Sum of Prices: {{ aggregation.sum_prices }}</li>
+    <li>Average Price: {{ aggregation.avg_prices }}</li>
+    <li>Maximum Price: {{ aggregation.max_price }}</li>
+    <li>Minimum Price: {{ aggregation.min_price }}</li>
+  </ul>
+{% endblock content %}

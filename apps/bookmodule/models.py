@@ -7,3 +7,17 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.author}"
+
+class Address(models.Model):
+    city = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.city} - {self.street}" 
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name             

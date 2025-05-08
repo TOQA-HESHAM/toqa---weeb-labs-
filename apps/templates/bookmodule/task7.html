@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+{% block title %} Students Per City {% endblock title %}
+
+{% block content %}
+<h1>عدد الطلاب في كل مدينة</h1>
+<table border="1">
+  <tr>
+    <th>المدينة</th>
+    <th>عدد الطلاب</th>
+  </tr>
+  {% for city in cities %}
+  <tr>
+    <td>{{ city.city }}</td>
+    <td>{{ city.student_count }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}
