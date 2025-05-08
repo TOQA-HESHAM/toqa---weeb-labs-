@@ -5,6 +5,10 @@ from django.db.models import Q
 from django.db.models import Count, Sum, Avg, Max, Min
 from .models import Address, Student
 from django.db.models import Count
+from .models import Department
+from .models import Course
+from django.db.models import Min
+
 
 
 
@@ -153,3 +157,27 @@ def task7_view(request):
     data = Address.objects.annotate(student_count=Count('student'))
     context = {'cities': data}
     return render(request, 'bookmodule/task7.html', context)
+
+## lab 9
+def lab9_task1(request):
+    departments = Department.objects.annotate(num_students=Count('student'))
+    return render(request, 'bookmodule/lab9_task1.html', {'departments': departments})    
+
+
+def lab9_task2(request):
+    courses = Course.objects.annotate(num_students=Count('student'))
+    return render(request, 'bookmodule/lab9_task2.html', {'courses': courses}) 
+
+
+def lab9_task3(request):
+    departments = Department.objects.all()
+    results = []
+    for d in departments:
+        oldest = d.student_set.order_by('id').first()
+        if oldest:
+            results.append({'department': d.name, 'student': oldest.name, 'id': oldest.id})
+    return render(request, 'bookmodule/lab9_task3.html', {'results': results})   
+
+def lab9_task4(request):
+    departments = Department.objects.annotate(num_students=Count('student')).filter(num_students__gt=2).order_by('-num_students')
+    return render(request, 'bookmodule/lab9_task4.html', {'departments': departments})        

@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% block title %} Lab9 - Task 3 {% endblock %}
+
+{% block content %}
+<h2>Oldest Student in Each Department</h2>
+<table border="1">
+  <tr>
+    <th>Department</th>
+    <th>Student</th>
+    <th>ID</th>
+  </tr>
+  {% for r in results %}
+  <tr>
+    <td>{{ r.department }}</td>
+    <td>{{ r.student }}</td>
+    <td>{{ r.id }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

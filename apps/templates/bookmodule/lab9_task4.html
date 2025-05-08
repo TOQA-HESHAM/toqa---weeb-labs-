@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+{% block title %} Lab9 - Task 4 {% endblock %}
+
+{% block content %}
+<h2>Departments with More Than 2 Students</h2>
+<table border="1">
+  <tr>
+    <th>Department</th>
+    <th>Number of Students</th>
+  </tr>
+  {% for d in departments %}
+  <tr>
+    <td>{{ d.name }}</td>
+    <td>{{ d.num_students }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

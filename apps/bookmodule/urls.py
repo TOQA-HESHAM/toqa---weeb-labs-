@@ -1,5 +1,6 @@
 from django.urls import path 
 from . import views 
+from .views import lab9_task1, lab9_task2, lab9_task3, lab9_task4
 urlpatterns = [
     path('', views.index),
     path('index2/<int:val1>/', views.index2),
@@ -27,4 +28,9 @@ urlpatterns = [
  path('task4/', views.task4_view, name='books.task4'),
  path('task5/', views.task5_view, name='books.task5'),
  path('task7/', views.task7_view, name='books.task7'),
+ ## lab 9
+ path('lab9/task1/', lab9_task1, name='lab9_task1'),
+ path('lab9/task2/', lab9_task2, name='lab9_task2'),
+ path('lab9/task3/', lab9_task3, name='lab9_task3'),
+ path('lab9/task4/', lab9_task4, name='lab9_task4'),
 ]
